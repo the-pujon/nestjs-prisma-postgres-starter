@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  postgres_db:
+    image: postgres:17.2-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: simple_blog
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data 
+    networks:
+      - blog_network
+
+
+  pg_admin:
+    image: dpage/pgadmin4:latest
+    container_name: pg_admin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+      - "8443:443" 
+    depends_on:
+      - postgres_db
+    networks:
+      - blog_network
+
+
+  backend:
+    container_name: simple_blog_backend
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: postgres_db
+      DATABASE_PORT: 5432
+      DATABASE_USER: admin
+      DATABASE_PASSWORD: admin
+      DATABASE_NAME: simple_blog
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: 1000
+    depends_on:
+      - postgres_db
+      - pg_admin
+    networks:
+      - blog_network
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules  # Use named volume
+
+
+networks:
+  blog_network:
+    driver: bridge
+
+volumes:
+  node_modules:
