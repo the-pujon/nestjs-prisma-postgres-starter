@@ -11,7 +11,7 @@ export class responseBlogDto {
   published?: boolean;
 
   @Expose()
-  authorId: number;
+  authorId?: number;
 
   @Expose()
   author: string;
