@@ -7,7 +7,7 @@ async function bootstrap() {
   await app.listen(process.env.PORT ?? 3000);
   // eslint-disable-next-line prettier/prettier
   console.log(
-    `Application is running on: ${await app.getUrl()}`,
+    `Application is running successfully on: ${await app.getUrl()}`,
   );
 }
 bootstrap().catch((err) => {

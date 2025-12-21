@@ -5,13 +5,13 @@ services:
     image: postgres:17.2-alpine
     container_name: postgres_db
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: simple_blog
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5432:5432"
+      - "${DATABASE_PORT}:5432"
     volumes:
-      - ./db:/var/lib/postgresql/data 
+      - db_data:/var/lib/postgresql/data 
     networks:
       - blog_network
 
@@ -20,8 +20,8 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pg_admin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "8080:80"
       - "8443:443" 
@@ -39,12 +39,12 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_HOST: postgres_db
-      DATABASE_PORT: 5432
-      DATABASE_USER: admin
-      DATABASE_PASSWORD: admin
-      DATABASE_NAME: simple_blog
-      NODE_ENV: development
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USER: ${POSTGRES_USER}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASE_NAME: ${POSTGRES_DB}
+      NODE_ENV: ${NODE_ENV}
       CHOKIDAR_USEPOLLING: "true"
       CHOKIDAR_INTERVAL: 1000
     depends_on:
@@ -54,7 +54,7 @@ services:
       - blog_network
     volumes:
       - .:/app
-      - node_modules:/app/node_modules  # Use named volume
+      - /app/node_modules  # Use named volume
 
 
 networks:
@@ -62,4 +62,4 @@ networks:
     driver: bridge
 
 volumes:
-  node_modules:
+  db_data:
