@@ -1,7 +1,13 @@
-import { CallHandler, ExecutionContext, NestInterceptor } from '@nestjs/common';
+import {
+  CallHandler,
+  ExecutionContext,
+  Injectable,
+  NestInterceptor,
+} from '@nestjs/common';
 import { map, Observable } from 'rxjs';
 import { SuccessResponseDto } from '../dto/success-response.dto';
 
+@Injectable()
 export class TransformInterceptor<T> implements NestInterceptor<
   T,
   SuccessResponseDto<T>
