@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { createBlogDto } from './dto/createBlog.dto';
 import { responseBlogDto } from './dto/responseBlog.dto';
 import { PrismaService } from 'src/common/services/prisma.service';
+// import { PrismaService } from 'src/common/services/prisma.service';
 // import { prisma } from 'lib/prisma';
 
 @Injectable()
@@ -36,7 +37,6 @@ export class BlogService {
     });
   }
 
-
   async getPostById(id: string): Promise<responseBlogDto> {
     const savedData = await this.prismaService.client.post.findUnique({
       where: {
@@ -54,7 +54,10 @@ export class BlogService {
     };
   }
 
-  async updatePost(id: string, payload: createBlogDto): Promise<responseBlogDto> {
+  async updatePost(
+    id: string,
+    payload: createBlogDto,
+  ): Promise<responseBlogDto> {
     const savedData = await this.prismaService.client.post.update({
       where: {
         id: Number(id),
@@ -82,5 +85,4 @@ export class BlogService {
       authorId: savedData.authorId ?? undefined,
     };
   }
-
 }
