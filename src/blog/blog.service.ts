@@ -23,4 +23,64 @@ export class BlogService {
       authorId: savedData.authorId ?? undefined,
     };
   }
+
+  async getAllPost(): Promise<responseBlogDto[]> {
+    const savedData = await this.prismaService.client.post.findMany();
+    return savedData.map((data) => {
+      return {
+        ...data,
+        content: data.content ?? undefined,
+        published: data.published ?? undefined,
+        authorId: data.authorId ?? undefined,
+      };
+    });
+  }
+
+
+  async getPostById(id: string): Promise<responseBlogDto> {
+    const savedData = await this.prismaService.client.post.findUnique({
+      where: {
+        id: Number(id),
+      },
+    });
+    if (!savedData) {
+      throw new Error('Post not found');
+    }
+    return {
+      ...savedData,
+      content: savedData.content ?? undefined,
+      published: savedData.published ?? undefined,
+      authorId: savedData.authorId ?? undefined,
+    };
+  }
+
+  async updatePost(id: string, payload: createBlogDto): Promise<responseBlogDto> {
+    const savedData = await this.prismaService.client.post.update({
+      where: {
+        id: Number(id),
+      },
+      data: payload,
+    });
+    return {
+      ...savedData,
+      content: savedData.content ?? undefined,
+      published: savedData.published ?? undefined,
+      authorId: savedData.authorId ?? undefined,
+    };
+  }
+
+  async deletePost(id: string): Promise<responseBlogDto> {
+    const savedData = await this.prismaService.client.post.delete({
+      where: {
+        id: Number(id),
+      },
+    });
+    return {
+      ...savedData,
+      content: savedData.content ?? undefined,
+      published: savedData.published ?? undefined,
+      authorId: savedData.authorId ?? undefined,
+    };
+  }
+
 }
