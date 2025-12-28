@@ -17,15 +17,15 @@ const mockResult = {
 
 // Mock PrismaService - matches how BlogService uses this.prismaService.client.post
 const mockPrismaService = {
-  client: {
-    post: {
-      create: jest.fn().mockResolvedValue(mockResult),
-      findMany: jest.fn().mockResolvedValue([mockResult]),
-      findUnique: jest.fn().mockResolvedValue(mockResult),
-      update: jest.fn().mockResolvedValue(mockResult),
-      delete: jest.fn().mockResolvedValue(mockResult),
-    },
+
+  post: {
+    create: jest.fn().mockResolvedValue(mockResult),
+    findMany: jest.fn().mockResolvedValue([mockResult]),
+    findUnique: jest.fn().mockResolvedValue(mockResult),
+    update: jest.fn().mockResolvedValue(mockResult),
+    delete: jest.fn().mockResolvedValue(mockResult),
   },
+
 };
 
 describe('BlogService', () => {

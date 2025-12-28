@@ -7,14 +7,15 @@ import { PrismaService } from 'src/common/services/prisma.service';
 
 @Injectable()
 export class BlogService {
-  private prismaService: PrismaService;
+  // private prismaService: PrismaService;
 
-  constructor(prismaService: PrismaService) {
-    this.prismaService = prismaService;
-  }
+  // constructor(prismaService: PrismaService) {
+  //   this.prismaService = prismaService;
+  // }
+  constructor(private prismaService: PrismaService) { }
 
   async createPost(Payload: createBlogDto): Promise<responseBlogDto> {
-    const savedData = await this.prismaService.client.post.create({
+    const savedData = await this.prismaService.post.create({
       data: Payload,
     });
     return {
@@ -26,7 +27,7 @@ export class BlogService {
   }
 
   async getAllPost(): Promise<responseBlogDto[]> {
-    const savedData = await this.prismaService.client.post.findMany();
+    const savedData = await this.prismaService.post.findMany();
     return savedData.map((data) => {
       return {
         ...data,
@@ -38,7 +39,7 @@ export class BlogService {
   }
 
   async getPostById(id: string): Promise<responseBlogDto> {
-    const savedData = await this.prismaService.client.post.findUnique({
+    const savedData = await this.prismaService.post.findUnique({
       where: {
         id: Number(id),
       },
@@ -58,7 +59,7 @@ export class BlogService {
     id: string,
     payload: createBlogDto,
   ): Promise<responseBlogDto> {
-    const savedData = await this.prismaService.client.post.update({
+    const savedData = await this.prismaService.post.update({
       where: {
         id: Number(id),
       },
@@ -73,7 +74,7 @@ export class BlogService {
   }
 
   async deletePost(id: string): Promise<responseBlogDto> {
-    const savedData = await this.prismaService.client.post.delete({
+    const savedData = await this.prismaService.post.delete({
       where: {
         id: Number(id),
       },
