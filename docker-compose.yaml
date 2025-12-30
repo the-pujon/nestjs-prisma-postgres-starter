@@ -1,4 +1,4 @@
-version: '3.8'
+# version: '3.8'
 
 services:
   postgres_db:
@@ -11,10 +11,9 @@ services:
     ports:
       - "${DATABASE_PORT}:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data 
+      - db_data:/var/lib/postgresql/data
     networks:
       - blog_network
-
 
   pg_admin:
     image: dpage/pgadmin4:latest
@@ -24,20 +23,17 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "8080:80"
-      - "8443:443" 
+      - "8443:443"
     depends_on:
       - postgres_db
     networks:
       - blog_network
 
-
   backend:
     container_name: simple_blog_backend
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: thepujon/simple_blog_backend:1.1
     ports:
-      - "3000:3000"
+      - "5000:5000"
     environment:
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PORT: ${DATABASE_PORT}
@@ -52,10 +48,6 @@ services:
       - pg_admin
     networks:
       - blog_network
-    volumes:
-      - .:/app
-      - /app/node_modules  # Use named volume
-
 
 networks:
   blog_network:
