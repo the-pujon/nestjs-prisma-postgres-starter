@@ -21,4 +21,7 @@ export class responseBlogDto {
 
   @Expose()
   updatedAt: Date;
+
+  @Expose()
+  id: number;
 }
