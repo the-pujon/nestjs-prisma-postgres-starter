@@ -12,7 +12,7 @@ export class BlogService {
   // constructor(prismaService: PrismaService) {
   //   this.prismaService = prismaService;
   // }
-  constructor(private prismaService: PrismaService) { }
+  constructor(private prismaService: PrismaService) {}
 
   async createPost(Payload: createBlogDto): Promise<responseBlogDto> {
     const savedData = await this.prismaService.post.create({

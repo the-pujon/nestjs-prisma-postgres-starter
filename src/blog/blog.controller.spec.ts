@@ -3,7 +3,6 @@ import { BlogController } from './blog.controller';
 import { BlogService } from './blog.service';
 import { PrismaService } from 'src/common/services/prisma.service';
 import { createBlogDto } from './dto/createBlog.dto';
-import { responseBlogDto } from './dto/responseBlog.dto';
 
 const mockResult = {
   id: 1,
@@ -25,7 +24,6 @@ const mockPrismaService = {
     update: jest.fn().mockResolvedValue(mockResult),
     delete: jest.fn().mockResolvedValue(mockResult),
   },
-
 };
 
 describe('BlogController', () => {
