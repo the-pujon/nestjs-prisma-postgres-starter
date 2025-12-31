@@ -31,7 +31,10 @@ services:
 
   backend:
     container_name: simple_blog_backend
-    image: thepujon/simple_blog_backend:1.1
+    image: thepujon/simple_blog_backend:1.5
+    # build:
+    #   context: ./
+    #   dockerfile: Dockerfile
     ports:
       - "5000:5000"
     environment:

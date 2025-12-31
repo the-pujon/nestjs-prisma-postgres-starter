@@ -15,17 +15,16 @@ import { AuthGuard } from 'src/common/guards/auth.guard';
 
 @Controller('api/blog')
 export class BlogController {
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService) {}
 
   @Post('/')
   @UseGuards(AuthGuard)
   createBlog(@Body() payload: createBlogDto): Promise<responseBlogDto> {
     return this.blogService.createPost(payload);
-
   }
 
   @Get('/')
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   getAllPost(): Promise<responseBlogDto[]> {
     return this.blogService.getAllPost();
   }
