@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from './prisma.service';
+import { PrismaService } from '../../shared/infrastructure/database/prisma.service';
 import { Prisma } from '@prisma/client';
-import { CustomLoggerService } from './custom-logger.service';
+import { CustomLoggerService } from '../../shared/infrastructure/logging/logger.service';
 
 export interface ActivityLogMetadata {
   ip?: string;

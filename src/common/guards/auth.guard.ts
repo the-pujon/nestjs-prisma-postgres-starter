@@ -7,8 +7,8 @@ import {
 import type { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 import config from '../config/app.config';
-import { RedisService } from '../services/redis.service';
-import { PrismaService } from '../services/prisma.service';
+import { RedisService } from '../../shared/infrastructure/cache/redis.service';
+import { PrismaService } from '../../shared/infrastructure/database/prisma.service';
 
 interface IAccessTokenPayload {
   userId: string;

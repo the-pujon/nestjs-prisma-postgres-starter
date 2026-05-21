@@ -9,6 +9,10 @@
 </p>
 
 <p align="center">
+  <strong>✨ Now with Clean Architecture Implementation!</strong>
+</p>
+
+<p align="center">
   <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
   <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
   <img src="https://img.shields.io/badge/node-%3E%3D22-brightgreen" alt="Node Version" />
@@ -21,6 +25,7 @@
 ## 📋 Table of Contents
 
 - [Why This Starter?](#-why-this-starter)
+- [Clean Architecture](#-clean-architecture) ⭐ NEW!
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Quick Start](#-quick-start)
@@ -47,7 +52,70 @@
 - [License](#-license)
 
 ---
+�️ Clean Architecture
 
+**This project now implements Clean Architecture principles for maintainable, testable, and scalable code!**
+
+### What's Implemented
+
+✅ **Auth Module** - Fully refactored with clean architecture
+- Split 1113-line monolithic service into 3 focused services (< 400 lines each)
+- Domain models with business logic
+- Repository pattern for data abstraction
+- Dependency injection with interfaces
+- Easy to test (no database needed for unit tests)
+
+### Structure
+
+```
+src/modules/auth/
+├── domain/              ← Business logic & rules
+│   ├── models/          (User, AuthSession with business methods)
+│   ├── interfaces/      (Repository contracts)
+│   └── exceptions/      (Domain-specific errors)
+├── application/         ← Use cases & workflows
+│   └── services/        (RegistrationService, AuthenticationService, TokenService)
+├── infrastructure/      ← Technical implementations
+│   └── repositories/    (Prisma implementations)
+└── presentation/        ← HTTP layer (in src/auth/)
+    ├── controllers/     (API endpoints)
+    └── dto/             (Request/response DTOs)
+```
+
+### 📚 Complete Documentation
+
+We've created **4,350+ lines of comprehensive, beginner-friendly documentation**:
+
+1. **[Clean Architecture Guide](./structure_docs/01-CLEAN-ARCHITECTURE-GUIDE.md)** - Core concepts & principles
+2. **[Folder Structure Guide](./structure_docs/02-FOLDER-STRUCTURE-GUIDE.md)** - Where everything goes
+3. **[Quick Reference](./structure_docs/03-QUICK-REFERENCE.md)** - Common tasks & patterns
+4. **[Beginners Tutorial](./structure_docs/04-BEGINNERS-TUTORIAL.md)** - Step-by-step feature building
+5. **[Migration Guide](./structure_docs/05-MIGRATION-GUIDE.md)** - Refactoring existing code
+6. **[FAQ](./structure_docs/06-FAQ.md)** - 30+ answered questions
+
+👉 **Start here:** [structure_docs/README.md](./structure_docs/README.md)
+
+### Benefits
+
+- ✅ **Testability** - Domain models test without database
+- ✅ **Maintainability** - Clear separation of concerns
+- ✅ **Flexibility** - Easy to swap ORMs or databases
+- ✅ **Scalability** - Services stay small and focused
+- ✅ **Team Productivity** - Clear patterns for everyone to follow
+
+### Migration Status
+
+| Module | Status | Details |
+|--------|--------|---------|
+| **Auth** | ✅ Complete | Fully migrated to clean architecture |
+| **User** | 🏗️ Structure Ready | Simple CRUD - can stay as-is |
+| **Job** | 🏗️ Structure Ready | Good candidate for migration |
+
+See [CLEAN_ARCHITECTURE_IMPLEMENTATION.md](./CLEAN_ARCHITECTURE_IMPLEMENTATION.md) for detailed status.
+
+---
+
+## �
 ## 🌟 Why This Starter?
 
 This isn't just another boilerplate—it's a **battle-tested, production-grade foundation** that implements enterprise security patterns and best practices out of the box:

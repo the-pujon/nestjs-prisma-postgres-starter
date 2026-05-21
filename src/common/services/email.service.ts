@@ -5,7 +5,7 @@ import * as path from 'path';
 import config from '../config/app.config';
 import AppError from '../errors/app.error';
 import httpStatus from 'http-status';
-import { CustomLoggerService } from './custom-logger.service';
+import { CustomLoggerService } from '../../shared/infrastructure/logging/logger.service';
 
 export interface EmailOptions {
   to: string;
