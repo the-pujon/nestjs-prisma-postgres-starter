@@ -1,6 +1,6 @@
 import { Injectable, Inject, OnModuleInit } from '@nestjs/common';
 import { Redis as RedisType } from 'ioredis';
-import { REDIS_CLIENT } from '../../../common/modules/redis.module';
+import { REDIS_CLIENT } from '../modules/redis.module';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
 

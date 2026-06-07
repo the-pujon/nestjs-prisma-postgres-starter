@@ -7,10 +7,10 @@ import {
 } from '../../domain/exceptions';
 import { RedisService } from '../../../../shared/infrastructure/cache/redis.service';
 import { EmailQueueService } from '../../../../shared/infrastructure/queues/email-queue.service';
-import { ActivityLogService } from '../../../../common/services/activity-log.service';
+import { ActivityLogService } from '../../../../shared/infrastructure/services/activity-log.service';
 import { CustomLoggerService } from '../../../../shared/infrastructure/logging/logger.service';
 import { AUTH_CONFIG } from '../../config/auth.config';
-import config from '../../../../common/config/app.config';
+import config from '../../../shared/config/app.config';
 
 /**
  * Email Verification Service

@@ -16,8 +16,7 @@ import { UserController } from './presentation/controllers/user.controller';
 // Shared Module (provides PrismaService, RedisService, CustomLoggerService globally)
 import { SharedModule } from '../../shared/shared.module';
 
-// Common Services (Legacy - to be moved)
-import { ActivityLogService } from '../../common/services/activity-log.service';
+import { ActivityLogService } from '../../shared/infrastructure/services/activity-log.service';
 
 /**
  * User Module

@@ -5,7 +5,7 @@ import { JwksClient } from 'jwks-rsa';
 import { CustomLoggerService } from '../../../shared/infrastructure/logging/logger.service';
 import { RedisService } from '../../../shared/infrastructure/cache/redis.service';
 import { PrismaService } from '../../../shared/infrastructure/database/prisma.service';
-import { ActivityLogService } from '../../../common/services/activity-log.service';
+import { ActivityLogService } from '../../../shared/infrastructure/services/activity-log.service';
 import { AuthUtilsService } from './auth-utils.service';
 import {
   GOOGLE_OAUTH_CONFIG,
@@ -20,8 +20,8 @@ import {
   IGoogleIdTokenClaims,
 } from '../interfaces/google-oauth.interface';
 import { IStoredRefreshToken, UserRole } from '../interfaces/auth.interface';
-import AppError from '../../../common/errors/app.error';
-import config from '../../../common/config/app.config';
+import AppError from '../../../shared/infrastructure/errors/app.error';
+import config from '../../../shared/config/app.config';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 

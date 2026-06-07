@@ -7,7 +7,7 @@ import {
   UserDeletionException,
 } from '../../domain/exceptions/user.exceptions';
 import { CustomLoggerService } from '../../../../shared/infrastructure/logging/logger.service';
-import { ActivityLogService } from '../../../../common/services/activity-log.service';
+import { ActivityLogService } from '../../../../shared/infrastructure/services/activity-log.service';
 
 /**
  * User Management Service

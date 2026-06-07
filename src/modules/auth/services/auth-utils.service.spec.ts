@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthUtilsService } from './auth-utils.service';
-import { RedisService } from '../../common/services/redis.service';
+import { RedisService } from '../../../shared/infrastructure/cache/redis.service';
 
 describe('AuthUtilsService', () => {
   let service: AuthUtilsService;

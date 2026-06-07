@@ -1,8 +1,8 @@
 import { BullModule } from '@nestjs/bullmq';
 import { Module } from '@nestjs/common';
-import config from '../config/app.config';
+import config from '../../config/app.config';
 import { EmailService } from '../services/email.service';
-import { EmailQueueService } from '../../shared/infrastructure/queues/email-queue.service';
+import { EmailQueueService } from '../queues/email-queue.service';
 import { EmailProcessor } from '../queues/email/email.processor';
 
 @Module({

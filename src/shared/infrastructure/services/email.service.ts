@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
 import * as fs from 'fs';
 import * as path from 'path';
-import config from '../config/app.config';
+import config from '../../config/app.config';
 import AppError from '../errors/app.error';
 import httpStatus from 'http-status';
-import { CustomLoggerService } from '../../shared/infrastructure/logging/logger.service';
+import { CustomLoggerService } from '../logging/logger.service';
 
 export interface EmailOptions {
   to: string;

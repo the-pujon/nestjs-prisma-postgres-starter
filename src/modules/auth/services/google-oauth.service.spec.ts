@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GoogleOAuthService } from './google-oauth.service';
-import { CustomLoggerService } from '../../common/services/custom-logger.service';
-import { RedisService } from '../../common/services/redis.service';
-import { PrismaService } from '../../common/services/prisma.service';
-import { ActivityLogService } from '../../common/services/activity-log.service';
+import { CustomLoggerService } from '../../../shared/infrastructure/logging/logger.service';
+import { RedisService } from '../../../shared/infrastructure/cache/redis.service';
+import { PrismaService } from '../../../shared/infrastructure/database/prisma.service';
+import { ActivityLogService } from '../../../shared/infrastructure/services/activity-log.service';
 import { AuthUtilsService } from './auth-utils.service';
 
 describe('GoogleOAuthService', () => {

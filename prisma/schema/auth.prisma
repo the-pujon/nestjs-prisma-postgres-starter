@@ -24,7 +24,7 @@ model authUser {
     emailHistory      emailHistory[]
     activityLogEvents ActivityLogEvent[]
     subscriptions     Subscription[]
-    jobs              Job[]
+    authSessions      authSession[]
 
     @@index([email, id, providerId])
     @@index([username])
@@ -51,4 +51,28 @@ model authSecurity {
     authUser authUser @relation(fields: [authId], references: [id], onDelete: Cascade)
 
     @@index([authId])
+}
+
+// ================================
+// Auth Session Model
+// ================================
+
+model authSession {
+    id             String    @id @default(uuid())
+    userId         String
+    refreshToken   String    @unique
+    expiresAt      DateTime
+    userAgent      String?
+    ipAddress      String?
+    revoked        Boolean   @default(false)
+    createdAt      DateTime  @default(now())
+    lastActivityAt DateTime?
+
+    // Relations
+    authUser authUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
+    @@index([refreshToken])
+    @@index([expiresAt])
+    @@map("auth_session")
 }

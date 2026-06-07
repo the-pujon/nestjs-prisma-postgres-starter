@@ -21,13 +21,11 @@ import { AuthController } from './presentation/controllers/auth.controller';
 // Shared Module (provides PrismaService, RedisService, CustomLoggerService globally)
 import { SharedModule } from '../../shared/shared.module';
 import { EmailQueueService } from '../../shared/infrastructure/queues/email-queue.service';
-
-// Common Services (Legacy - to be moved)
-import { ActivityLogService } from '../../common/services/activity-log.service';
+import { ActivityLogService } from '../../shared/infrastructure/services/activity-log.service';
 import { AuthUtilsService } from './services/auth-utils.service';
 import { GoogleOAuthService } from './services/google-oauth.service';
-import { EmailService } from '../../common/services/email.service';
-import { QueueModule } from '../../common/modules';
+import { EmailService } from '../../shared/infrastructure/services/email.service';
+import { QueueModule } from '../../shared/infrastructure/modules/queue.module';
 
 /**
  * Auth Module

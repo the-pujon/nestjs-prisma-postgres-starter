@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import type { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
-import config from '../../../../common/config/app.config';
+import config from '../../../shared/config/app.config';
 import { RedisService } from '../../../../shared/infrastructure/cache/redis.service';
 import { PrismaService } from '../../../../shared/infrastructure/database/prisma.service';
 

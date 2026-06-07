@@ -29,7 +29,7 @@ import {
 
 // Shared Services
 import { CustomLoggerService } from '../../../../shared/infrastructure/logging/logger.service';
-import { THROTTLER_CONFIG } from '../../../../common/config/throttler.config';
+import { THROTTLER_CONFIG } from '../../../shared/config/throttler.config';
 
 /**
  * Authentication Controller

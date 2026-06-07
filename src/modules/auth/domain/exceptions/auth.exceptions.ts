@@ -1,4 +1,4 @@
-import AppError from '../../../../common/errors/app.error';
+import AppError from '../../../../shared/infrastructure/errors/app.error';
 
 /**
  * Domain Exceptions for Auth Module

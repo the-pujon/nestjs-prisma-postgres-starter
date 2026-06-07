@@ -8,11 +8,11 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 // Legacy Modules (to be refactored)
-import { RedisModule } from './common/modules/redis.module';
-import { RateLimitModule } from './common/modules/rate-limit.module';
+import { RedisModule } from './shared/infrastructure/modules/redis.module';
+import { RateLimitModule } from './shared/infrastructure/modules/rate-limit.module';
 import { MetricsModule } from './metrics/metrics.module';
 import { WinstonModule } from 'nest-winston';
-import { winstonConfig } from './common/config/winston.config';
+import { winstonConfig } from './shared/config/winston.config';
 
 @Module({
   imports: [

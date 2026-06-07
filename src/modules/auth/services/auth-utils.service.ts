@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken';
 import { Response } from 'express';
 import httpStatus from 'http-status';
-import config from '../../../common/config/app.config';
+import config from '../../../shared/config/app.config';
 import {
   IAccessTokenPayload,
   IRefreshTokenPayload,
@@ -11,7 +11,7 @@ import {
 } from '../interfaces/auth.interface';
 import { AUTH_CONFIG } from '../config/auth.config';
 import { RedisService } from '../../../shared/infrastructure/cache/redis.service';
-import AppError from '../../../common/errors/app.error';
+import AppError from '../../../shared/infrastructure/errors/app.error';
 import crypto from 'crypto';
 
 interface TokenOptions {

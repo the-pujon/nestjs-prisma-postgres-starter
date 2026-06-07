@@ -1,16 +1,16 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { AllExceptionsFilter } from './common/filters/all-exception.filter';
+import { AllExceptionsFilter } from './shared/presentation/filters/all-exception.filter';
 import { LoggerService, ValidationPipe } from '@nestjs/common';
-import { TransformInterceptor } from './common/interceptors/transform.interceptor';
+import { TransformInterceptor } from './shared/presentation/interceptors/transform.interceptor';
 import {
   WINSTON_MODULE_NEST_PROVIDER,
   WINSTON_MODULE_PROVIDER,
 } from 'nest-winston';
 import { Logger } from 'winston';
 import helmet from 'helmet';
-import { setupSwagger } from './common/config/swagger.config';
-// import { AllExceptionFilter } from './common/filters/all-exception.filter';
+import { setupSwagger } from './shared/config/swagger.config';
+// import { AllExceptionFilter } from './shared/presentation/filters/all-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {

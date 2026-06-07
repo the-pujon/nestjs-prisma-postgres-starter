@@ -14,7 +14,7 @@ import {
   SessionNotFoundException,
   SessionExpiredException,
 } from '../../domain/exceptions';
-import { ActivityLogService } from '../../../../common/services/activity-log.service';
+import { ActivityLogService } from '../../../../shared/infrastructure/services/activity-log.service';
 import { CustomLoggerService } from '../../../../shared/infrastructure/logging/logger.service';
 import { AuthUtilsService } from '../../services/auth-utils.service';
 import { TokenService } from './token.service';
